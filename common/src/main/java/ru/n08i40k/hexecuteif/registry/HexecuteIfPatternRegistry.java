@@ -27,7 +27,7 @@ public class HexecuteIfPatternRegistry {
     public static HexPattern CAN_BREAK_BLOCK = register(HexPattern.fromAngles("qaqqqqqwa", HexDir.EAST), "can_break_block", OpCanBreakBlock.INSTANCE);
     public static HexPattern CAN_PLACE_BLOCK = register(HexPattern.fromAngles("eeeeedeed", HexDir.SOUTH_EAST), "can_place_block", OpCanPlaceBlock.INSTANCE);
 
-    public static HexPattern INV_SLOT_COUNT = register(HexPattern.fromAngles("qwawqwa", HexDir.SOUTH_EAST), "inv_slot_count", OpInvSlotCount.INSTANCE);
+    public static HexPattern INV_SLOT_COUNT = register(HexPattern.fromAngles("qwawqwaqw", HexDir.SOUTH_EAST), "inv_slot_count", OpInvSlotCount.INSTANCE);
     public static HexPattern INV_OCCUPIED_SLOTS = register(HexPattern.fromAngles("dwewdwed", HexDir.NORTH_WEST), "inv_occupied_slots", OpInvOccupiedSlots.INSTANCE);
     public static HexPattern INV_SLOT_ITEM_COUNT = register(HexPattern.fromAngles("dwewdweedq", HexDir.NORTH_WEST), "inv_slot_item_count", OpInvSlotItemCount.INSTANCE);
 
