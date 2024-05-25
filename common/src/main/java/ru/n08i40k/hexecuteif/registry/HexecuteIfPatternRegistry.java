@@ -10,9 +10,7 @@ import ru.n08i40k.hexecuteif.casting.patterns.OpCanPlaceBlock;
 import ru.n08i40k.hexecuteif.casting.patterns.eval.OpEvalIf;
 import net.minecraft.resources.ResourceLocation;
 import ru.n08i40k.hexecuteif.casting.patterns.eval.OpHaltIf;
-import ru.n08i40k.hexecuteif.casting.patterns.spell.OpInvAllocatedSlots;
-import ru.n08i40k.hexecuteif.casting.patterns.spell.OpInvSlotCount;
-import ru.n08i40k.hexecuteif.casting.patterns.spell.OpInvSlotItemCount;
+import ru.n08i40k.hexecuteif.casting.patterns.spell.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +20,7 @@ import static ru.n08i40k.hexecuteif.HexecuteIf.id;
 public class HexecuteIfPatternRegistry {
     public static List<Triple<HexPattern, ResourceLocation, Action>> PATTERNS = new ArrayList<>();
     public static List<Triple<HexPattern, ResourceLocation, Action>> PER_WORLD_PATTERNS = new ArrayList<>();
-    // IMPORTANT: be careful to keep the registration calls looking like this, or you'll have to edit the hexdoc pattern regex.
+
     public static HexPattern EVAL_IF = register(HexPattern.fromAngles("deaqqq", HexDir.SOUTH_EAST), "eval_if", OpEvalIf.INSTANCE);
     public static HexPattern HALT_IF = register(HexPattern.fromAngles("aqdeee", HexDir.SOUTH_WEST), "halt_if", OpHaltIf.INSTANCE);
 
@@ -30,8 +28,11 @@ public class HexecuteIfPatternRegistry {
     public static HexPattern CAN_PLACE_BLOCK = register(HexPattern.fromAngles("eeeeedeed", HexDir.SOUTH_EAST), "can_place_block", OpCanPlaceBlock.INSTANCE);
 
     public static HexPattern INV_SLOT_COUNT = register(HexPattern.fromAngles("qwawqwa", HexDir.SOUTH_EAST), "inv_slot_count", OpInvSlotCount.INSTANCE);
-    public static HexPattern INV_ALLOCATED_SLOTS = register(HexPattern.fromAngles("dwewdwed", HexDir.NORTH_WEST), "inv_allocated_slots", OpInvAllocatedSlots.INSTANCE);
+    public static HexPattern INV_OCCUPIED_SLOTS = register(HexPattern.fromAngles("dwewdwed", HexDir.NORTH_WEST), "inv_occupied_slots", OpInvOccupiedSlots.INSTANCE);
     public static HexPattern INV_SLOT_ITEM_COUNT = register(HexPattern.fromAngles("dwewdweedq", HexDir.NORTH_WEST), "inv_slot_item_count", OpInvSlotItemCount.INSTANCE);
+
+    public static HexPattern INV_DROP_ITEM = register(HexPattern.fromAngles("dwewdwedwwadeeed", HexDir.NORTH_WEST), "inv_drop_item", OpInvDropItem.INSTANCE);
+    public static HexPattern INV_TRANSFER_ITEM = register(HexPattern.fromAngles("dwewdwedwwadeeedewadeeed", HexDir.NORTH_WEST), "inv_transfer_item", OpInvTransferItem.INSTANCE);
 
     public static void init() {
         try {

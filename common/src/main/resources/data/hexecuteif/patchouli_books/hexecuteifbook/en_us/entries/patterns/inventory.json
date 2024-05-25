@@ -1,0 +1,74 @@
+{
+  "name": "hexecuteif.entry.inventory",
+  "category": "hexcasting:patterns/spells",
+  "icon": "minecraft:chest",
+  "sortnum": 0,
+  "advancement": "hexcasting:root",
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "An $(l)Inventory Holder$() refers to an entity that possesses an inventory. This can be a player or a set of coordinates pointing to a storage unit, such as a chest, shulker box, or barrel. The argument for an Inventory Holder is represented in the format $(l)\"invholder\"$() indicating either an entity (like a player) or a vector (coordinates) that specifies the location of the storage unit."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Spell Cost Calculation$()$(br)The cost of casting spells is determined through the following steps.$(li)Base Cost:$(br)The initial cost of the spell is derived from the base cost specified on the spell's description page.$(li)Interaction Multiplier$(br)The base cost is then adjusted based on the target of the spell, applying specific multipliers according to the nature of the interaction."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)Caster Himself.$(br)If the spell is cast on the caster themselves, the multiplier is x1.0. This means the cost remains unchanged from the base cost.$(li)Storage Block.$(br)If the spell interacts with a storage block (such as a chest, shulker box, or barrel), the multiplier is x1.5. This increases the base cost by 50%."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li2)Another Player.$(br)If the spell is cast on another player, the multiplier is x5.0. This significantly increases the base cost by 500%."
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "hexecuteif:inv_slot_count",
+      "anchor": "hexecuteif:inv_slot_count",
+      "input": "invholder",
+      "output": "num",
+      "text": "hexecuteif.page.inventory.inv_slot_count"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "hexecuteif:inv_occupied_slots",
+      "anchor": "hexecuteif:inv_occupied_slots",
+      "input": "invholder",
+      "output": "[num]",
+      "text": "hexecuteif.page.inventory.inv_occupied_slots"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "hexecuteif:inv_slot_item_count",
+      "anchor": "hexecuteif:inv_slot_item_count",
+      "input": "invholder, num",
+      "output": "num",
+      "text": "hexecuteif.page.inventory.inv_slot_item_count"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "hexecuteif:inv_drop_item",
+      "anchor": "hexecuteif:inv_drop_item",
+      "input": "invholder, num, num",
+      "output": "",
+      "text": "hexecuteif.page.inventory.inv_drop_item.1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "hexecuteif.page.inventory.inv_drop_item.2"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "hexecuteif:inv_transfer_item",
+      "anchor": "hexecuteif:inv_transfer_item",
+      "input": "invholder, num, invholder, num, num",
+      "output": "",
+      "text": "hexecuteif.page.inventory.inv_transfer_item.1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "hexecuteif.page.inventory.inv_transfer_item.2"
+    }
+  ]
+}

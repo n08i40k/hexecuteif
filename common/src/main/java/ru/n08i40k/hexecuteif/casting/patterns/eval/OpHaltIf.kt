@@ -2,47 +2,38 @@ package ru.n08i40k.hexecuteif.casting.patterns.eval
 
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.casting.eval.FrameEvaluate
-import at.petrak.hexcasting.api.spell.casting.eval.FrameFinishEval
 import at.petrak.hexcasting.api.spell.casting.eval.SpellContinuation
 import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.PatternIota
-import at.petrak.hexcasting.api.spell.mishaps.MishapNotEnoughArgs
 
-class OpEvalIf : Action {
+object OpHaltIf : Action {
     override fun operate(
         continuation: SpellContinuation,
         stack: MutableList<Iota>,
         ravenmind: Iota?,
         ctx: CastingContext
     ): OperationResult {
-        val datum = stack.removeLastOrNull() ?: throw MishapNotEnoughArgs(2, 0)
-
-        val needToEval = stack.getBool(0, 1);
+        val needToHalt = stack.getBool(stack.lastIndex)
         stack.removeLast()
 
-        if (!needToEval)
+        if (!needToHalt)
             return OperationResult(continuation, stack, ravenmind, listOf())
 
-        val instrs = evaluatable(datum, 0)
-
-//        needToEval.
-
-        instrs.ifRight {
-            ctx.incDepth()
+        var newStack = stack.toList()
+        var done = false
+        var newCont = continuation
+        while (!done && newCont is SpellContinuation.NotDone) {
+            // Kotlin Y U NO destructuring assignment
+            val newInfo = newCont.frame.breakDownwards(newStack)
+            done = newInfo.first
+            newStack = newInfo.second
+            newCont = newCont.next
+        }
+        // if we hit no continuation boundaries (i.e. thoth/hermes exits), we've TOTALLY cleared the itinerary...
+        if (!done) {
+            // bomb the stack so we exit
+            newStack = listOf()
         }
 
-        // if not installed already...
-        // also, never make a break boundary when evaluating just one pattern
-        val newCont =
-            if (instrs.left().isPresent || (continuation is SpellContinuation.NotDone && continuation.frame is FrameFinishEval)) {
-                continuation
-            } else {
-                continuation.pushFrame(FrameFinishEval) // install a break-boundary after eval
-            }
-
-        val instrsList = instrs.map({ SpellList.LList(0, listOf(PatternIota(it))) }, { it })
-        val frame = FrameEvaluate(instrsList, true)
-        return OperationResult(newCont.pushFrame(frame), stack, ravenmind, listOf())
+        return OperationResult(newCont, newStack, ravenmind, listOf())
     }
 }
