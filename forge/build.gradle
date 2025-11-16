@@ -130,19 +130,19 @@ publishMods {
 //        }
 //    }
 //
-//    modrinth {
-//        accessToken = project.modrinthApiToken
-//        projectId = project.modrinthId
-//        minecraftVersions.add("1.19.2")
-//
-//        requires {
-//            slug = "architectury-api"
-//        }
-//        requires {
-//            slug = "kotlin-for-forge"
-//        }
-//        requires {
-//            slug = "hex-casting"
-//        }
-//    }
+    modrinth {
+        accessToken = env.MODRINTH_API_KEY.value
+        projectId = project.modrinthId
+        minecraftVersions.add("1.19.2")
+
+        requires {
+            slug = "architectury-api"
+        }
+        requires {
+            slug = "kotlin-for-forge"
+        }
+        requires {
+            slug = "hex-casting"
+        }
+    }
 }
