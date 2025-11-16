@@ -1,14 +1,1 @@
-{
-  "required": true,
-  "package": "ru.n08i40k.hexecuteif.mixin",
-  "compatibilityLevel": "JAVA_17",
-  "minVersion": "0.8",
-  "client": [
-    "HexecuteIfMixin"
-  ],
-  "mixins": [
-  ],
-  "injectors": {
-    "defaultRequire": 1
-  }
-}
+{}
