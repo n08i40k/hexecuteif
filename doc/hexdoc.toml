@@ -1,16 +1,14 @@
 modid = "hexecuteif"
-book = "hexecuteif:hexecuteifbook"
-default_lang = "en_us"
-default_branch = "main"
+book = "hexcasting:thehexbook"
 
 resource_dirs = [  # top takes priority
     "resources",
-    "{_common.src}/main/resources",
-    { path="{^_common.src}/generated/resources", required=false },
-    "{_fabric.src}/main/resources",
-    { path="{^_fabric.src}/generated/resources", required=false },
-    "{_forge.src}/main/resources",
-    { path="{^_forge.src}/generated/resources", required=false },
+    "{$_common.src}/main/resources",
+    { path="{$_common.src}/generated/resources", required=false },
+    "{$_fabric.src}/main/resources",
+    { path="{$_fabric.src}/generated/resources", required=false },
+    "{$_forge.src}/main/resources",
+    { path="{$_forge.src}/generated/resources", required=false },
     { modid="hexcasting" },
     { modid="minecraft" },
     { modid="hexdoc" },
@@ -18,7 +16,7 @@ resource_dirs = [  # top takes priority
 export_dir = "src/hexdoc_hexecuteif/_export/generated"
 
 [template]
-icon = "icon.png"
+icon = "{$_common.src}/main/resources/assets/hexecuteif/icon.png"
 include = [
     "hexecuteif",
     "hexcasting",
@@ -26,31 +24,31 @@ include = [
 ]
 
 [template.args]
-mod_name = "Hex Execute If"
-author = "N08I40K"
+mod_name = "HexecuteIf"
+author = "n08i40k"
 show_landing_text = false
 
 [extra.hexcasting]
-# regexes for parsing pattern registry files - try running copier update and picking a different regex if your patterns aren't loading
 # NOTE: "!Raw" means "don't apply variable interpolation to this value"
-_pattern_regex = { "!Raw"='(?P<is_per_world>register|registerPerWorld)\(HexPattern\.fromAngles\("(?P<signature>[qweasd]+)",\s*HexDir\.(?P<startdir>\w+)\),\s*"(?P<name>[^"]+)"?' }
-_per_world_value = "registerPerWorld"
+_pattern_regex = { "!Raw"='make\("(?P<name>[^"]+)",\s*HexDir\.(?P<startdir>\w+),\s*"(?P<signature>[qweasd]+)"' }
 
 [[extra.hexcasting.pattern_stubs]]
-path = "{^^^_common.package}/registry/HexecuteIfPatternRegistry.java"
+path = "{$_common.kotlin}/registry/HexecuteIfActions.kt"
 regex = "{^_pattern_regex}"
-per_world_value = "{^_per_world_value}"
 
 # platforms
 
 [_common]
 src = "../common/src"
-package = "{src}/main/java/ru/n08i40k/hexecuteif"
+java = "{src}/main/java/ru/n08i40k/hexecuteif"
+kotlin = "{src}/main/kotlin/ru/n08i40k/hexecuteif"
 
 [_fabric]
 src = "../fabric/src"
-package = "{src}/main/java/ru/n08i40k/hexecuteif/fabric"
+java = "{src}/main/java/ru/n08i40k/hexecuteif/fabric"
+kotlin = "{src}/main/kotlin/ru/n08i40k/hexecuteif/fabric"
 
 [_forge]
 src = "../forge/src"
-package = "{src}/main/java/ru/n08i40k/hexecuteif/forge"
+java = "{src}/main/java/ru/n08i40k/hexecuteif/forge"
+kotlin = "{src}/main/kotlin/ru/n08i40k/hexecuteif/forge"

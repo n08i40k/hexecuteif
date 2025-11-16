@@ -1,0 +1,76 @@
+{
+  name: "hexecuteif.book.patterns.spells.inventory_spells",
+  category: "hexcasting:patterns/spells",
+  icon: "minecraft:chest",
+  advancement: "hexcasting:root",
+  pages: [
+    {
+      type: "patchouli:text",
+      text: "hexecuteif.book.patterns.spells.inventory_spells.intro.inv_holder"
+    },
+    {
+      type: "patchouli:text",
+      text: "hexecuteif.book.patterns.spells.inventory_spells.intro.cost_calculation"
+    },
+    {
+      type: "patchouli:text",
+      text: "hexecuteif.book.patterns.spells.inventory_spells.intro.cost_calculation.self"
+    },
+    {
+      type: "patchouli:text",
+      text: "hexecuteif.book.patterns.spells.inventory_spells.intro.cost_calculation.block"
+    },
+    {
+      type: "patchouli:text",
+      text: "hexecuteif.book.patterns.spells.inventory_spells.intro.cost_calculation.player"
+    },
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexecuteif:inv_slot_count",
+      anchor: "hexecuteif:inv_slot_count",
+      input: "invholder",
+      output: "num",
+      text: "hexecuteif.book.patterns.spells.inventory_spells.inv_slot_count"
+    },
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexecuteif:inv_occupied_slots",
+      anchor: "hexecuteif:inv_occupied_slots",
+      input: "invholder",
+      output: "[num]",
+      text: "hexecuteif.book.patterns.spells.inventory_spells.inv_occupied_slots"
+    },
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexecuteif:inv_slot_item_count",
+      anchor: "hexecuteif:inv_slot_item_count",
+      input: "invholder, num",
+      output: "num",
+      text: "hexecuteif.book.patterns.spells.inventory_spells.inv_slot_item_count"
+    },
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexecuteif:inv_drop_item",
+      anchor: "hexecuteif:inv_drop_item",
+      input: "invholder, num, num",
+      output: "",
+      text: "hexecuteif.book.patterns.spells.inventory_spells.inv_drop_item.1"
+    },
+    {
+      type: "patchouli:text",
+      text: "hexecuteif.book.patterns.spells.inventory_spells.inv_drop_item.2"
+    },
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexecuteif:inv_transfer_item",
+      anchor: "hexecuteif:inv_transfer_item",
+      input: "invholder, num, invholder, num, num",
+      output: "",
+      text: "hexecuteif.book.patterns.spells.inventory_spells.inv_transfer_item.1"
+    },
+    {
+      type: "patchouli:text",
+      text: "hexecuteif.book.patterns.spells.inventory_spells.inv_transfer_item.2"
+    }
+  ]
+}

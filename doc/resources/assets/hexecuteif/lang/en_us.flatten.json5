@@ -1,0 +1,8 @@
+{
+  hexdoc: {
+    hexecuteif: {
+      title: "HexecuteIf Book",
+      description: "HexCasting addon that adds several useful spells.",
+    },
+  }
+}

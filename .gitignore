@@ -7,7 +7,6 @@ out/
 .gradle/
 output/
 bin/
-libs/
 
 .classpath
 .project
@@ -18,8 +17,6 @@ classes/
 *.launch
 .DS_Store
 
-venv
-
 .architectury-transformer
 
 # hexdoc
@@ -27,8 +24,6 @@ _site/
 _checkout/
 __gradle_version__.py
 .hexdoc*/
-
-.hexdoc-template-inputs.yml
 
 # Python
 

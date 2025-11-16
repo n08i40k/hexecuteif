@@ -1,41 +1,46 @@
-modLoader = "javafml"
-loaderVersion = "[${forgeDependencyVersion},)"
+modLoader = "kotlinforforge"
+loaderVersion = "[${versions.kotlin_forge},)"
 license = "MIT"
 
 [[mods]]
 modId = "hexecuteif"
 version = "${version}"
 displayName = "HexecuteIf"
-logoFile = "icon.png"
-authors = "N08I40K"
-description = '''
-Addon that adds several useful spells.
-'''
+logoFile = "assets/hexecuteif/icon.png"
+authors = "n08i40k"
+description = "HexCasting addon that adds several useful spells."
 
 [[dependencies.hexecuteif]]
 modId = "forge"
 mandatory = true
-versionRange = "[${forgeDependencyVersion},)"
+versionRange = "[${versions.forge_dependency},)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.hexecuteif]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[${minecraftVersion},)"
+versionRange = "[${versions.minecraft},)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.hexecuteif]]
 modId = "architectury"
 mandatory = true
-versionRange = "[${architecturyVersion},)"
+versionRange = "[${versions.architectury},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.hexecuteif]]
+modId = "cloth_config"
+mandatory = true
+versionRange = "[${versions.cloth_config},)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.hexecuteif]]
 modId = "hexcasting"
 mandatory = true
-versionRange = "[${hexcastingVersion},)"
+versionRange = "[${versions.hexcasting_dependency},)"
 ordering = "NONE"
 side = "BOTH"

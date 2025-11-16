@@ -1,0 +1,32 @@
+{
+  name: "hexecuteif.book.patterns.advanced_meta",
+  category: "hexcasting:patterns",
+  icon: "minecraft:birch_sign",
+  sortnum: 13,
+  advancement: "hexcasting:root",
+  pages: [
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexecuteif:eval_if",
+      anchor: "hexecuteif:eval_if",
+      input: "bool, [pattern] | pattern",
+      output: "many",
+      text: "hexecuteif.book.patterns.advanced_meta.eval_if.1"
+    },
+    {
+      type: "patchouli:text",
+      text: "hexecuteif.book.patterns.advanced_meta.eval_if.2"
+    },
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexecuteif:halt_if",
+      anchor: "hexecuteif:halt_if",
+      input: "bool",
+      text: "hexecuteif.book.patterns.advanced_meta.halt_if.1"
+    },
+    {
+      type: "patchouli:text",
+      text: "hexecuteif.book.patterns.advanced_meta.halt_if.2"
+    }
+  ]
+}

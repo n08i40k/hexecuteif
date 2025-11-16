@@ -1,0 +1,122 @@
+{
+  hexecuteif: {
+    book: {
+      patterns: {
+        spells: {
+          block_spells: {
+            "": "Block Spells",
+            can_break_block: "Take the position of a block and check whether it can be broken.",
+            can_place_block: "Accepts the position and flag for checking for liquid, and then checks whether it is possible to place a block in this place"
+          },
+          inventory_spells: {
+            "": "Inventory Spells",
+            intro: {
+              inv_holder: "An $(l)Inventory Holder$() refers to an entity that possesses an inventory. This can be a player or a set of coordinates pointing to a storage unit, such as a chest, shulker box, or barrel. The argument for an Inventory Holder is represented in the format $(l)\"invholder\"$() indicating either an entity (like a player) or a vector (coordinates) that specifies the location of the storage unit.",
+              cost_calculation: {
+                "": "$(l)Spell Cost Calculation.$()$(br)The cost of casting spells is determined through the following steps.$(li)Base Cost.$(br)The initial cost of the spell is derived from the base cost specified on the spell's description page.$(li)Interaction Multiplier.$(br)The base cost is then adjusted based on the target of the spell, applying specific multipliers according to the nature of the interaction.",
+                self: "$(li2)Caster Himself.$(br)If the spell is cast on the caster themselves, the multiplier is x1.0. This means the cost remains unchanged from the base cost.",
+                block: "$(li2)Storage Block.$(br)If the spell interacts with a storage block (such as a chest, shulker box, or barrel), the multiplier is x1.5. This increases the base cost by 50%%.",
+                player: "$(li2)Another Player.$(br)If the spell is cast on another player, the multiplier is x5.0. This significantly increases the base cost by 500%%."
+              }
+            },
+            inv_slot_count: "This spell accepts an Inventory Holder as its parameter and returns the total number of slots available in the inventory. It helps determine the maximum capacity of the inventory.",
+            inv_occupied_slots: "This spell accepts an Inventory Holder as its parameter and returns a list of slots that are currently in use. Each element in the list represents a slot that contains at least one item.",
+            inv_slot_item_count: "This spell takes an Inventory Holder and a slot index as parameters. It returns the number of items present in the specified slot. It is important to note that the slot must contain items, and it cannot be empty.",
+            inv_drop_item: {
+              "1": "This spell accepts an Inventory Holder, a slot index, and a number as parameters.",
+              "2": "It removes the specified number of items from the given slot in the inventory. The slot must contain items, ensuring that the spell does not attempt to remove items from an empty slot.",
+            },
+            inv_transfer_item: {
+              "1": "$(br)This spell requires a source Inventory Holder, a source slot index, a target Inventory Holder, a target slot index, and a number as parameters.",
+              "2": "It transfers the specified number of items from the source slot in the source inventory to the target slot in the target inventory. The source slot must not be empty, and the target slot must be empty. Additionally, the number of items to be moved must be at least 1 and no more than the total number of items in the source slot.",
+            },
+          }
+        },
+        advanced_meta: {
+          "": "Advanced Meta",
+          eval_if: {
+            "1": "This spell will assess the current magical environment and selectively execute further spells if and only if the preconditions set by the caster are met.",
+            "2": "This adaptation of $(l:patterns/meta#hexcasting:eval)$(action)Hermes' Gambit/$ allows the caster to perform complex spells with a conditional gateway, ensuring they are only cast when beneficial or safe."
+          },
+          halt_if: {
+            "1": "Similar to $(l:patterns/meta#hexcasting:halt)$(action)Charon's Gambit/$ this spell stops the execution of subsequent spells, but only if a specific condition is true.",
+            "2": "It acts as a safety net, ensuring that potentially dangerous or unwanted spells are halted under certain circumstances."
+          },
+        }
+      },
+    },
+  },
+  hexcasting: {
+    action: {
+      "hexecuteif:": {
+        eval_if: "Hermes' Deliberation",
+        halt_if: "Charon's Caution",
+        can_break_block: "Can Break Block",
+        can_place_block: "Can Place Block",
+        inv_slot_count: "Inventory Size",
+        inv_occupied_slots: "Occupied Slots",
+        inv_slot_item_count: "Number of Items in Slot",
+        inv_drop_item: "Throw Item",
+        inv_transfer_item: "Transfer Item",
+      },
+      book: {
+        "hexecuteif:": {},
+      },
+    },
+    mishap: {
+      can_not_access_to_container_inventory: "You can't access to any containers by this spell",
+      can_not_access_to_player_inventory: "You can't access to any player by this spell",
+      can_not_modify_container_inventory: "You can't modify any container inventory by this spell",
+      can_not_modify_player_inventory: "You can't modify any player inventory by this spell",
+      invalid_value: {
+        slot: {
+          empty: "Empty Slot Index",
+          not_empty: "Not Empty Slot Index",
+        },
+        inventory_holder: "Container Block or Player"
+      },
+      excepted_block: {
+        block_entity: "Block Entity",
+        container: "Container"
+      },
+    }
+  },
+  text: {
+    "autoconfig.hexecuteif": {
+      title: "HexecuteIf Config",
+      category: {
+        client: "Client",
+        server: "Server",
+      },
+      option: {
+        client: {},
+        server: {
+          multiplyContainerAccess: {
+            "": "Media Multiply On Container",
+            "@Tooltip": "How much will the amount of media required to use spells that require access to the container's inventory be multiplied?",
+          },
+          multiplyPlayerAccess: {
+            "": "Media Multiply On Player",
+            "@Tooltip": "How much will the amount of media required to use spells that require access to the player’s inventory be multiplied?",
+          },
+          canAccessContainer: {
+            "": "Can Access To Container",
+            "@Tooltip": "Can a spell that requires access to inventory work with a container?",
+          },
+          canAccessPlayer: {
+            "": "Can Access To Player",
+            "@Tooltip": "Can a spell that requires access to inventory work with a player?",
+          },
+          canModifyContainer: {
+            "": "Can Modify Container",
+            "@Tooltip": "Can a spell that changes inventory items work with a container?",
+          },
+          canModifyPlayer: {
+            "": "Can Modify Player",
+            "@Tooltip": "Can a spell that changes inventory items work with a player?"
+          },
+        },
+      },
+    },
+  },
+}
