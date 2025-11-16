@@ -1,0 +1,21 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+# https://copier.readthedocs.io/en/stable/updating/#never-change-the-answers-file-manually
+_commit: v2.2.2
+_src_path: gh:FallingColors/hexdummy
+advanced: true
+capitalize_platforms: false
+classname: HexecuteIf
+default_branch: master
+description: HexCasting addon that adds several useful spells.
+display_name: HexecuteIf
+github_repo: hexecuteif
+github_user: n08i40k
+homepage_url: https://n08i40k.github.io/hexecuteif
+java_package: ru.n08i40k.hexecuteif
+kotlin_package: ru.n08i40k.hexecuteif
+mappings_name: Mojmap
+minecraft_version_in_mod_version: true
+mit_license: true
+mod_version: 0.1.1
+modid: hexecuteif
+sources_url: https://github.com/n08i40k/hexecuteif
