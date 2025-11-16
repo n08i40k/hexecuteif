@@ -18,13 +18,14 @@ object OpInvDropItem : SpellAction {
         get() = 3
 
     override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
-        val inventoryWrap = args.getInventoryWrap(0, OpInvTransferItem.argc, ctx.world)
+        val inventoryWrap = args.getInventoryWrap(0, argc, ctx.world)
         inventoryWrap.assertModify(ctx.caster)
+
         ctx.assertInventoryWrapInRange(inventoryWrap)
 
-        val slotIdx = args.getIntBetween(1, 0, inventoryWrap.getSize(), OpInvTransferItem.argc)
+        val slotIdx = args.getIntBetween(1, 0, inventoryWrap.getSize(), argc)
 
-        val itemCount = args.getIntBetween(2, 1, 64, OpInvTransferItem.argc)
+        val itemCount = args.getIntBetween(2, 1, 64, argc)
 
         // validate source
         val itemStack = when (inventoryWrap) {
@@ -32,11 +33,12 @@ object OpInvDropItem : SpellAction {
             is InventoryWrap.Inventory -> inventoryWrap.inventory.getItem(slotIdx)
         }
         if (itemStack.isEmpty) throw MishapInvalidIota.of(
-            DoubleIota(slotIdx.toDouble()), 3, "slot.not_empty", slotIdx
+            DoubleIota(slotIdx.toDouble()), 1, "slot.not_empty", slotIdx
         )
 
         if (itemCount > itemStack.count)
-            throw MishapInvalidIota.of(DoubleIota(slotIdx.toDouble()), 0, "double.between", 1, itemStack.count)
+            throw MishapInvalidIota.of(
+                DoubleIota(slotIdx.toDouble()), 0, "double.between", 1, itemStack.count)
 
         val position: Vec3 = when (inventoryWrap) {
             is InventoryWrap.Container -> {
