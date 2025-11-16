@@ -31,11 +31,11 @@ sealed class InventoryWrap {
         return when (this) {
             is Inventory -> {
                 if (this.inventory.player == caster) 1.0
-                else HexecuteIfConfig.common().multiplyPlayerAccess();
+                else HexecuteIfConfig.common().multiplyPlayerAccess()
             }
 
             is Container -> {
-                HexecuteIfConfig.common().multiplyPlayerAccess();
+                HexecuteIfConfig.common().multiplyPlayerAccess()
             }
         }
     }
@@ -59,7 +59,7 @@ sealed class InventoryWrap {
 
         when (this) {
             is Container -> {
-                if (!HexecuteIfConfig.common().canModifyPlayer())
+                if (!HexecuteIfConfig.common().canModifyContainer())
                     throw MishapDisallowedSpell("can_not_modify_container_inventory")
             }
 
