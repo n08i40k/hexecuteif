@@ -111,7 +111,7 @@ publishMods {
     modLoaders.add("forge")
 
     version = project.version + "-forge"
-    displayName = "Hex Execute If $project.version [Forge]"
+    displayName = "HexecuteIf $project.version [Forge]"
 
     // Uncomment your desired platform(s)
 //    curseforge {

@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "id": "hexecuteif",
   "version": "${version}",
-  "name": "Hex Execute If",
-  "description": "An addon that adds the \"execute if\" pattern.",
+  "name": "HexecuteIf",
+  "description": "Addon that adds several useful spells.",
   "authors": [
     "N08I40K"
   ],
@@ -36,5 +36,8 @@
     "fabric-language-kotlin": ">=${fabricKotlinVersion}",
     "architectury": ">=${architecturyVersion}",
     "hexcasting": ">=${hexcastingVersion}"
+  },
+  "suggests": {
+    "modmenu": ">=4.2.0-beta.2"
   }
 }

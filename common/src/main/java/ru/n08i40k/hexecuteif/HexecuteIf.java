@@ -18,7 +18,7 @@ public class HexecuteIf {
 
 
     public static void init() {
-        LOGGER.info("Hex Execute If says hello!");
+        LOGGER.info("HexecuteIf says hello!");
 
         HexecuteIfAbstractions.initPlatformSpecific();
         HexecuteIfItemRegistry.init();

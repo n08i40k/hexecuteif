@@ -5,11 +5,11 @@ license = "MIT"
 [[mods]]
 modId = "hexecuteif"
 version = "${version}"
-displayName = "Hex Execute If"
+displayName = "HexecuteIf"
 logoFile = "icon.png"
 authors = "N08I40K"
 description = '''
-An addon that adds the "execute if" pattern.
+Addon that adds several useful spells.
 '''
 
 [[dependencies.hexecuteif]]
