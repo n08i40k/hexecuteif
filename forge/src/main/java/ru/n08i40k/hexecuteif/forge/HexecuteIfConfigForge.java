@@ -1,6 +1,5 @@
 package ru.n08i40k.hexecuteif.forge;
 
-import at.petrak.hexcasting.api.misc.MediaConstants;
 import ru.n08i40k.hexecuteif.api.config.HexecuteIfConfig;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -23,8 +22,67 @@ public class HexecuteIfConfigForge {
     }
 
     public static class Common implements HexecuteIfConfig.CommonConfigAccess {
-        public Common(ForgeConfigSpec.Builder builder) {
+        private static ForgeConfigSpec.DoubleValue multiplyContainerAccess;
+        private static ForgeConfigSpec.DoubleValue multiplyPlayerAccess;
 
+        private static ForgeConfigSpec.BooleanValue canAccessContainer;
+        private static ForgeConfigSpec.BooleanValue canAccessPlayer;
+
+        private static ForgeConfigSpec.BooleanValue canModifyContainer;
+        private static ForgeConfigSpec.BooleanValue canModifyPlayer;
+
+
+        public Common(ForgeConfigSpec.Builder builder) {
+            builder.push("Media Multipliers");
+            multiplyContainerAccess = builder.comment("How much will the amount of media required to use spells that require access to the container's inventory be multiplied?")
+                    .defineInRange("multiplyContainerAccess", DEFAULT_MULTIPLY_CONTAINER_ACCESS, 0.0, 100.0);
+            multiplyPlayerAccess = builder.comment("How much will the amount of media required to use spells that require access to the player’s inventory be multiplied?")
+                    .defineInRange("multiplyPlayerAccess", DEFAULT_MULTIPLY_PLAYER_ACCESS, 0.0, 100.0);
+            builder.pop();
+
+            builder.push("Inventory Access");
+            canAccessContainer = builder.comment("Can a spell that requires access to inventory work with a container?")
+                    .define("canAccessContainer", DEFAULT_CAN_ACCESS_CONTAINER);
+            canAccessPlayer = builder.comment("Can a spell that requires access to inventory work with a player?")
+                    .define("canAccessPlayer", DEFAULT_CAN_ACCESS_PLAYER);
+            builder.pop();
+
+            builder.push("Inventory Modify");
+            canModifyContainer = builder.comment("Can a spell that changes inventory items work with a container?")
+                            .define("canModifyContainer", DEFAULT_CAN_MODIFY_CONTAINER);
+            canModifyPlayer = builder.comment("Can a spell that changes inventory items work with a player?")
+                            .define("canModifyPlayer", DEFAULT_CAN_MODIFY_PLAYER);
+            builder.pop();
+        }
+
+        @Override
+        public double multiplyContainerAccess() {
+            return multiplyContainerAccess.get();
+        }
+
+        @Override
+        public double multiplyPlayerAccess() {
+            return multiplyPlayerAccess.get();
+        }
+
+        @Override
+        public boolean canAccessContainer() {
+            return canAccessContainer.get();
+        }
+
+        @Override
+        public boolean canAccessPlayer() {
+            return canAccessPlayer.get();
+        }
+
+        @Override
+        public boolean canModifyContainer() {
+            return canModifyContainer.get();
+        }
+
+        @Override
+        public boolean canModifyPlayer() {
+            return canModifyPlayer.get();
         }
     }
 
@@ -35,27 +93,7 @@ public class HexecuteIfConfigForge {
     }
 
     public static class Server implements HexecuteIfConfig.ServerConfigAccess {
-        // costs of actions
-        private static ForgeConfigSpec.DoubleValue congratsCost;
-        private static ForgeConfigSpec.DoubleValue signumCost;
-
         public Server(ForgeConfigSpec.Builder builder) {
-            builder.translation("text.autoconfig.hexecuteif.option.server.costs").push("costs");
-
-            congratsCost = builder.translation("text.autoconfig.hexecuteif.option.server.costs.congratsCost").defineInRange("congratsCost", DEFAULT_CONGRATS_COST, DEF_MIN_COST, DEF_MAX_COST);
-            signumCost = builder.translation("text.autoconfig.hexecuteif.option.server.costs.signumCost").defineInRange("signumCost", DEFAULT_SIGNUM_COST, DEF_MIN_COST, DEF_MAX_COST);
-
-            builder.pop();
-        }
-
-        @Override
-        public int getCongratsCost() {
-            return (int) (congratsCost.get() * MediaConstants.DUST_UNIT);
-        }
-
-        @Override
-        public int getSignumCost() {
-            return (int) (signumCost.get() * MediaConstants.DUST_UNIT);
         }
     }
 }
