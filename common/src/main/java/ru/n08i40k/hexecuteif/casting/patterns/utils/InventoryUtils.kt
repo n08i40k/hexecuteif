@@ -13,6 +13,7 @@ import net.minecraft.network.chat.Component
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.Container
+import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.block.entity.BlockEntity
 import ru.n08i40k.hexecuteif.api.config.HexecuteIfConfig
 
@@ -66,6 +67,23 @@ sealed class InventoryWrap {
             is Inventory -> {
                 if (inventory.player != caster && !HexecuteIfConfig.common().canModifyPlayer())
                     throw MishapDisallowedSpell("can_not_modify_player_inventory")
+            }
+        }
+    }
+
+    fun getItem(slot: Int): ItemStack {
+        when (this) {
+            is Container -> {
+                return this.container.getItem(slot)
+            }
+
+            is Inventory -> {
+                if (slot == 36)
+                    return this.inventory.offhand[0]
+                if (slot > 36)
+                    return this.inventory.getArmor(slot - 37)
+
+                return this.inventory.getItem(slot)
             }
         }
     }
