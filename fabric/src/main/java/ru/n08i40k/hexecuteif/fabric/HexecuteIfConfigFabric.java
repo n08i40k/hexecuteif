@@ -58,8 +58,8 @@ public class HexecuteIfConfigFabric extends PartitioningSerializer.GlobalData {
 
         @Override
         public void validatePostLoad() throws ValidationException {
-            this.multiplyContainerAccess = Math.max(1.0, Math.min(100.0, this.multiplyContainerAccess));
-            this.multiplyPlayerAccess = Math.max(1.0, Math.min(100.0, this.multiplyPlayerAccess));
+            this.multiplyContainerAccess = Math.max(0.0, Math.min(100.0, this.multiplyContainerAccess));
+            this.multiplyPlayerAccess = Math.max(0.0, Math.min(100.0, this.multiplyPlayerAccess));
         }
 
         @Override
