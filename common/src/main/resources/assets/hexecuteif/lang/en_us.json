@@ -44,7 +44,7 @@
   "hexecuteif.page.inventory.inv_slot_item_count": "This function takes an Inventory Holder and a slot index as parameters. It returns the number of items present in the specified slot. It is important to note that the slot must contain items, and it cannot be empty.",
   "hexecuteif.page.inventory.inv_drop_item.1": "This function accepts an Inventory Holder, a slot index, and a number as parameters.",
   "hexecuteif.page.inventory.inv_drop_item.2": "It removes the specified number of items from the given slot in the inventory. The slot must contain items, ensuring that the function does not attempt to remove items from an empty slot.",
-  "hexecuteif.page.inventory.inv_transfer_item.1": "This function requires a source Inventory Holder, a source slot index, a target Inventory Holder, a target slot index, and a number as parameters.",
+  "hexecuteif.page.inventory.inv_transfer_item.1": "$(br)This function requires a source Inventory Holder, a source slot index, a target Inventory Holder, a target slot index, and a number as parameters.",
   "hexecuteif.page.inventory.inv_transfer_item.2": "It transfers the specified number of items from the source slot in the source inventory to the target slot in the target inventory. The source slot must not be empty, and the target slot must be empty. Additionally, the number of items to be moved must be at least 1 and no more than the total number of items in the source slot.",
 
 

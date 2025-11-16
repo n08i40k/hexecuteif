@@ -12,15 +12,15 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(l)Spell Cost Calculation$()$(br)The cost of casting spells is determined through the following steps.$(li)Base Cost:$(br)The initial cost of the spell is derived from the base cost specified on the spell's description page.$(li)Interaction Multiplier$(br)The base cost is then adjusted based on the target of the spell, applying specific multipliers according to the nature of the interaction."
+      "text": "$(l)Spell Cost Calculation.$()$(br)The cost of casting spells is determined through the following steps.$(li)Base Cost.$(br)The initial cost of the spell is derived from the base cost specified on the spell's description page.$(li)Interaction Multiplier.$(br)The base cost is then adjusted based on the target of the spell, applying specific multipliers according to the nature of the interaction."
     },
     {
       "type": "patchouli:text",
-      "text": "$(li)Caster Himself.$(br)If the spell is cast on the caster themselves, the multiplier is x1.0. This means the cost remains unchanged from the base cost.$(li)Storage Block.$(br)If the spell interacts with a storage block (such as a chest, shulker box, or barrel), the multiplier is x1.5. This increases the base cost by 50%."
+      "text": "$(li2)Caster Himself.$(br)If the spell is cast on the caster themselves, the multiplier is x1.0. This means the cost remains unchanged from the base cost.$(li2)Storage Block.$(br)If the spell interacts with a storage block (such as a chest, shulker box, or barrel), the multiplier is x1.5. This increases the base cost by 50%%."
     },
     {
       "type": "patchouli:text",
-      "text": "$(li2)Another Player.$(br)If the spell is cast on another player, the multiplier is x5.0. This significantly increases the base cost by 500%."
+      "text": "$(li2)Another Player.$(br)If the spell is cast on another player, the multiplier is x5.0. This significantly increases the base cost by 500%%."
     },
     {
       "type": "hexcasting:pattern",
